@@ -9,7 +9,7 @@ create break and return emulation as if it was a regular `for` or `while` loop.
 To simulate break return `BREAK` or `RETURN`, to simulate `return` return `BREAK(value)` or
 `RETURN(value)` both are equivalent but the one communicating the right intent should be used.
 
-The functions assume `this` is an array like object so they should be invoked with
+The functions assume `this` is an array or object so they should be invoked with
 `.call(arrayLike, callback)`
 
 defines:

@@ -1,7 +1,7 @@
 "use strict";
 const jestEach = require('jest-each');
 const testUtil = require('./testUtil');
-const util = require('util-type-funcs');
+const utilTypeFuncs = require('util-type-funcs');
 const objEachBreak = require('obj-each-break');
 
 const eachProp = objEachBreak.eachProp;
@@ -28,6 +28,11 @@ const objReduce = objEachBreak.objReduce;
 const objReduceLeft = objEachBreak.objReduceLeft;
 const objReduceRight = objEachBreak.objReduceRight;
 
+const toArrayIndex = utilTypeFuncs.toArrayIndex;
+const toNumber = utilTypeFuncs.toNumber;
+const isArrayIndex = utilTypeFuncs.isArrayIndex;
+const isArray = utilTypeFuncs.isArray;
+
 // re-exported for convenience
 const BREAK = objEachBreak.BREAK;
 const RETURN = objEachBreak.BREAK;
@@ -49,8 +54,8 @@ function simulatedReduceLeft(testValue, callback) {
     const objectKeys = [];
     for (let key in testValue) {
         if (testValue.hasOwnProperty(key)) {
-            if (util.isArrayIndex(key)) {
-                indexKeys.push(util.toNumber(key));
+            if (isArrayIndex(key)) {
+                indexKeys.push(toNumber(key));
             } else {
                 objectKeys.push(key);
             }
@@ -94,8 +99,8 @@ function simulatedReduceRight(testValue, callback) {
     const objectKeys = [];
     for (let key in testValue) {
         if (testValue.hasOwnProperty(key)) {
-            if (util.isArrayIndex(key)) {
-                indexKeys.push(util.toNumber(key));
+            if (isArrayIndex(key)) {
+                indexKeys.push(toNumber(key));
             } else {
                 objectKeys.push(key);
             }
@@ -153,7 +158,7 @@ jestEach([
                 if (testValue.hasOwnProperty(key)) {
                     expected[key] = {
                         value: testValue[key],
-                        key: util.toArrayIndex(key),
+                        key: toArrayIndex(key),
                         collection: testValue,
                     };
                 }
@@ -192,8 +197,8 @@ jestEach([
             const objectKeys = [];
             for (let key in testValue) {
                 if (testValue.hasOwnProperty(key)) {
-                    if (util.isArrayIndex(key)) {
-                        indexKeys.push(util.toNumber(key));
+                    if (isArrayIndex(key)) {
+                        indexKeys.push(toNumber(key));
                     } else {
                         objectKeys.push(key);
                     }
@@ -207,7 +212,7 @@ jestEach([
             for (let i = 0; i < iMax; i++) {
                 expected.push({
                     value: testValue[indexKeys[i]],
-                    key: util.toArrayIndex(indexKeys[i]),
+                    key: toArrayIndex(indexKeys[i]),
                     collection: testValue,
                 });
             }
@@ -216,7 +221,7 @@ jestEach([
             for (let i = 0; i < iMax; i++) {
                 expected.push({
                     value: testValue[objectKeys[i]],
-                    key: util.toArrayIndex(objectKeys[i]),
+                    key: toArrayIndex(objectKeys[i]),
                     collection: testValue,
                 });
             }
@@ -237,8 +242,8 @@ jestEach([
             const objectKeys = [];
             for (let key in testValue) {
                 if (testValue.hasOwnProperty(key)) {
-                    if (util.isArrayIndex(key)) {
-                        indexKeys.push(util.toNumber(key));
+                    if (isArrayIndex(key)) {
+                        indexKeys.push(toNumber(key));
                     } else {
                         objectKeys.push(key);
                     }
@@ -259,7 +264,7 @@ jestEach([
                 } else {
                     expected.push({
                         value: value,
-                        key: util.toArrayIndex(indexKeys[i]),
+                        key: toArrayIndex(indexKeys[i]),
                         collection: testValue,
                         reduced: reduced,
                     });
@@ -276,7 +281,7 @@ jestEach([
                 } else {
                     expected.push({
                         value: value,
-                        key: util.toArrayIndex(objectKeys[i]),
+                        key: toArrayIndex(objectKeys[i]),
                         collection: testValue,
                         reduced: reduced,
                     });
@@ -321,8 +326,8 @@ jestEach([
             const objectKeys = [];
             for (let key in testValue) {
                 if (testValue.hasOwnProperty(key)) {
-                    if (util.isArrayIndex(key)) {
-                        indexKeys.push(util.toNumber(key));
+                    if (isArrayIndex(key)) {
+                        indexKeys.push(toNumber(key));
                     } else {
                         objectKeys.push(key);
                     }
@@ -337,7 +342,7 @@ jestEach([
             for (let i = 0; i < iMax; i++) {
                 expected.push({
                     value: testValue[objectKeys[i]],
-                    key: util.toArrayIndex(objectKeys[i]),
+                    key: toArrayIndex(objectKeys[i]),
                     collection: testValue,
                 });
             }
@@ -346,7 +351,7 @@ jestEach([
             for (let i = 0; i < iMax; i++) {
                 expected.push({
                     value: testValue[indexKeys[i]],
-                    key: util.toArrayIndex(indexKeys[i]),
+                    key: toArrayIndex(indexKeys[i]),
                     collection: testValue,
                 });
             }
@@ -367,8 +372,8 @@ jestEach([
             const objectKeys = [];
             for (let key in testValue) {
                 if (testValue.hasOwnProperty(key)) {
-                    if (util.isArrayIndex(key)) {
-                        indexKeys.push(util.toNumber(key));
+                    if (isArrayIndex(key)) {
+                        indexKeys.push(toNumber(key));
                     } else {
                         objectKeys.push(key);
                     }
@@ -390,7 +395,7 @@ jestEach([
                 } else {
                     expected.push({
                         value: value,
-                        key: util.toArrayIndex(objectKeys[i]),
+                        key: toArrayIndex(objectKeys[i]),
                         collection: testValue,
                         reduced: reduced,
                     });
@@ -408,7 +413,7 @@ jestEach([
                 } else {
                     expected.push({
                         value: value,
-                        key: util.toArrayIndex(indexKeys[i]),
+                        key: toArrayIndex(indexKeys[i]),
                         collection: testValue,
                         reduced: reduced,
                     });
@@ -469,7 +474,7 @@ jestEach([
                 if (testValue.hasOwnProperty(key)) {
                     expected[key] = {
                         value: testValue[key],
-                        key: util.toArrayIndex(key),
+                        key: toArrayIndex(key),
                         collection: testValue,
                     };
                 }
@@ -508,8 +513,8 @@ jestEach([
             const objectKeys = [];
             for (let key in testValue) {
                 if (testValue.hasOwnProperty(key)) {
-                    if (util.isArrayIndex(key)) {
-                        indexKeys.push(util.toNumber(key));
+                    if (isArrayIndex(key)) {
+                        indexKeys.push(toNumber(key));
                     } else {
                         objectKeys.push(key);
                     }
@@ -523,7 +528,7 @@ jestEach([
             for (let i = 0; i < iMax; i++) {
                 expected.push({
                     value: testValue[indexKeys[i]],
-                    key: util.toArrayIndex(indexKeys[i]),
+                    key: toArrayIndex(indexKeys[i]),
                     collection: testValue,
                 });
             }
@@ -532,7 +537,7 @@ jestEach([
             for (let i = 0; i < iMax; i++) {
                 expected.push({
                     value: testValue[objectKeys[i]],
-                    key: util.toArrayIndex(objectKeys[i]),
+                    key: toArrayIndex(objectKeys[i]),
                     collection: testValue,
                 });
             }
@@ -553,8 +558,8 @@ jestEach([
             const objectKeys = [];
             for (let key in testValue) {
                 if (testValue.hasOwnProperty(key)) {
-                    if (util.isArrayIndex(key)) {
-                        indexKeys.push(util.toNumber(key));
+                    if (isArrayIndex(key)) {
+                        indexKeys.push(toNumber(key));
                     } else {
                         objectKeys.push(key);
                     }
@@ -575,7 +580,7 @@ jestEach([
                 } else {
                     expected.push({
                         value: value,
-                        key: util.toArrayIndex(indexKeys[i]),
+                        key: toArrayIndex(indexKeys[i]),
                         collection: testValue,
                         reduced: reduced,
                     });
@@ -593,7 +598,7 @@ jestEach([
                 } else {
                     expected.push({
                         value: value,
-                        key: util.toArrayIndex(objectKeys[i]),
+                        key: toArrayIndex(objectKeys[i]),
                         collection: testValue,
                         reduced: reduced,
                     });
@@ -638,8 +643,8 @@ jestEach([
             const objectKeys = [];
             for (let key in testValue) {
                 if (testValue.hasOwnProperty(key)) {
-                    if (util.isArrayIndex(key)) {
-                        indexKeys.push(util.toNumber(key));
+                    if (isArrayIndex(key)) {
+                        indexKeys.push(toNumber(key));
                     } else {
                         objectKeys.push(key);
                     }
@@ -654,7 +659,7 @@ jestEach([
             for (let i = 0; i < iMax; i++) {
                 expected.push({
                     value: testValue[objectKeys[i]],
-                    key: util.toArrayIndex(objectKeys[i]),
+                    key: toArrayIndex(objectKeys[i]),
                     collection: testValue,
                 });
             }
@@ -663,7 +668,7 @@ jestEach([
             for (let i = 0; i < iMax; i++) {
                 expected.push({
                     value: testValue[indexKeys[i]],
-                    key: util.toArrayIndex(indexKeys[i]),
+                    key: toArrayIndex(indexKeys[i]),
                     collection: testValue,
                 });
             }
@@ -684,8 +689,8 @@ jestEach([
             const objectKeys = [];
             for (let key in testValue) {
                 if (testValue.hasOwnProperty(key)) {
-                    if (util.isArrayIndex(key)) {
-                        indexKeys.push(util.toNumber(key));
+                    if (isArrayIndex(key)) {
+                        indexKeys.push(toNumber(key));
                     } else {
                         objectKeys.push(key);
                     }
@@ -707,7 +712,7 @@ jestEach([
                 } else {
                     expected.push({
                         value: value,
-                        key: util.toArrayIndex(objectKeys[i]),
+                        key: toArrayIndex(objectKeys[i]),
                         collection: testValue,
                         reduced: reduced,
                     });
@@ -725,7 +730,7 @@ jestEach([
                 } else {
                     expected.push({
                         value: value,
-                        key: util.toArrayIndex(indexKeys[i]),
+                        key: toArrayIndex(indexKeys[i]),
                         collection: testValue,
                         reduced: reduced,
                     });
@@ -765,12 +770,12 @@ jestEach([
     });
 
 const sum = (reduced, value, key, collection) => {
-    if (util.isArray(reduced)) {
+    if (isArray(reduced)) {
         // first element
         reduced = objReduce.call(reduced, sum);
     }
 
-    if (util.isArray(value)) {
+    if (isArray(value)) {
         const summed = objReduce.call(value, sum);
         return (reduced || 0) + summed;
     } else {
@@ -779,12 +784,12 @@ const sum = (reduced, value, key, collection) => {
 };
 
 const sumKeys = (reduced, value, key, collection) => {
-    if (util.isArray(reduced)) {
+    if (isArray(reduced)) {
         // first element
         reduced = objReduce.call(reduced, sumKeys);
     }
 
-    if (util.isArray(value)) {
+    if (isArray(value)) {
         const summed = objReduce.call(value, sumKeys);
         return (reduced || 0) + summed;
     } else {
@@ -793,12 +798,12 @@ const sumKeys = (reduced, value, key, collection) => {
 };
 
 const sumLeft = (reduced, value, key, collection) => {
-    if (util.isArray(reduced)) {
+    if (isArray(reduced)) {
         // first element
         reduced = objReduce.call(reduced, sumLeft);
     }
 
-    if (util.isArray(value)) {
+    if (isArray(value)) {
         const summed = objReduce.call(value, sumLeft);
         return (reduced || 0) + summed;
     } else {
@@ -807,12 +812,12 @@ const sumLeft = (reduced, value, key, collection) => {
 };
 
 const sumRight = (reduced, value, key, collection) => {
-    if (util.isArray(reduced)) {
+    if (isArray(reduced)) {
         // first element
         reduced = objReduce.call(reduced, sumRight);
     }
 
-    if (util.isArray(value)) {
+    if (isArray(value)) {
         const summed = objReduce.call(value, sumRight);
         return (reduced || 0) + summed;
     } else {
@@ -921,7 +926,7 @@ describe('Nested loop break returns default', () => {
         const accum = objReduceLeft.call([undefined, undefined, [1, 2, 3], [10, 20, 30], [100, 200, 300]], (reduced, value, key, collection) => {
             if (value !== undefined) {
                 BREAK.setDefault(0);
-                if (util.isArray(value)) {
+                if (isArray(value)) {
                     let inner = objReduceLeft.call(value, (reduced, value, key, collection) => {
                         BREAK.setDefault(100);
                         return BREAK;
@@ -983,6 +988,82 @@ jestEach([
         });
         test(`$_(${objectText}).every((value,key) => !(value > 0)) === ${testValue.every((value, key) => value > 0)}`, () => {
             expect(objEvery.call(testObject, (value, key) => !(value > 0))).toBe(testValue.every((value, key) => !(value > 0)));
+        });
+    });
+
+test(`mergeDefaults({ obj:{ a: 'a', } }, { obj:{a:'a', b:{}}});`, () => {
+    const result = mergeDefaults.call({ obj: { a: 'a' } }, { obj: { a: 'a', b: {} } });
+    expect(result).toEqual({ "obj": { "a": "a", "b": {} } });
+});
+
+
+jestEach([
+    [undefined, 'undefined', undefined],
+    [null, 'null', null],
+    [NaN, 'NaN', NaN],
+    ["test", '"test"', "test"],
+    [true, 'true', true],
+    [false, 'false', false],
+    [0, '0', 0],
+    [5, '5', 5],
+    [-5, '-5', -5],
+    [-5.3, '-5', -5.3],
+    ['0', '"0"', 0],
+    ['5', '"5"', 5],
+    ['5.3', '"5"', 5.3],
+    ['-1', '"-1"', -1],
+    ['-5', '"-5"', -5],
+    ['-5.3', '"-5.3"', -5.3],
+])
+    .describe('hasOwnProperties', (value, valueText, expectedVal) => {
+        test(`hasOwnProperties.call(${valueText}) === false`, () => {
+            expect(hasOwnProperties.call(value)).toBe(false);
+        });
+    });
+
+jestEach([
+    array([]),
+    object({}),
+])
+    .describe('hasOwnProperties', (valueText, testValue) => {
+        test(`hasOwnProperties.call(${valueText}) === false`, () => {
+            expect(hasOwnProperties.call(testValue)).toBe(false);
+        });
+    });
+
+jestEach([
+    array([1]),
+    object([1]),
+])
+    .describe('hasOwnProperties', (valueText, testValue) => {
+        test(`hasOwnProperties.call(${valueText}) === true`, () => {
+            expect(hasOwnProperties.call(testValue)).toBe(true);
+        });
+        test(`hasOwnProperties.call(${valueText}, '0') === false`, () => {
+            expect(hasOwnProperties.call(testValue, '0')).toBe(false);
+        });
+        test(`hasOwnProperties.call(${valueText}, ['0']) === false`, () => {
+            expect(hasOwnProperties.call(testValue, ['0'])).toBe(false);
+        });
+        test(`hasOwnProperties.call(${valueText}, {'0': ''}) === false`, () => {
+            expect(hasOwnProperties.call(testValue, { '0': '' })).toBe(false);
+        });
+        test(`hasOwnProperties.call(${valueText}, (value,key)=>key === 0) === false`, () => {
+            expect(hasOwnProperties.call(testValue, (value, key) => key === 0)).toBe(false);
+        });
+
+        // wrong prop not excluded
+        test(`hasOwnProperties.call(${valueText}, '1') === true`, () => {
+            expect(hasOwnProperties.call(testValue, '1')).toBe(true);
+        });
+        test(`hasOwnProperties.call(${valueText}, ['1']) === true`, () => {
+            expect(hasOwnProperties.call(testValue, ['1'])).toBe(true);
+        });
+        test(`hasOwnProperties.call(${valueText}, {'1': ''}) === true`, () => {
+            expect(hasOwnProperties.call(testValue, { '1': '' })).toBe(true);
+        });
+        test(`hasOwnProperties.call(${valueText}, (value,key)=>key === 1) === true`, () => {
+            expect(hasOwnProperties.call(testValue, (value, key) => key === 1)).toBe(true);
         });
     });
 
