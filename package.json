@@ -1,0 +1,35 @@
+{
+  "name": "obj-each-break",
+  "version": "0.1.0",
+  "description": "each, map, filter, reduce and reverse version with break and return emulation adapted to objects",
+  "main": "index.js",
+  "license": "MIT",
+  "author": {
+    "name": "Vladimir Schneider",
+    "email": "vladimir.schneider@gmail.com",
+    "url": "https://github.com/vsch"
+  },
+  "dependencies": {
+    "lodash.isfunction": "^3.0.9",
+    "util-type-funcs": "^0.2.0",
+    "for-each-break": "^0.2.0"
+  },
+  "devDependencies": {
+    "jest": "^22.4.3"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "property looping",
+    "breakable loop"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vsch/obj-each-break.git"
+  },
+  "homepage": "https://github.com/vsch/obj-each-break",
+  "bugs": {
+    "url": "https://github.com/vsch/obj-each-break/issues"
+  }
+}
