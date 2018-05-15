@@ -355,8 +355,8 @@ function deepClone(src) {
         let result = isArray(src) ? [] : {};
 
         const keys = Object.keys(src);
-        let i = keys.length;
-        while (i--) {
+        const iMax = keys.length;
+        for (let i = 0; i < iMax; i++) {
             const key = keys[i];
             const value = src[key];
             result[key] = isObjectLike(value) ? deepClone(value) : value;
@@ -384,8 +384,8 @@ function mergeDefaults(src, levels = undefined, isImmutable = false, deepCloneSr
 
     if (isObjectLike(dst) && isObjectLike(src)) {
         const keys = Object.keys(src);
-        let i = keys.length;
-        while (i--) {
+        const iMax = keys.length;
+        for (let i = 0; i < iMax; i++) {
             const key = keys[i];
             const value = src[key];
 

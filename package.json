@@ -1,6 +1,6 @@
 {
   "name": "obj-each-break",
-  "version": "0.1.4",
+  "version": "0.1.6",
   "description": "each, map, filter, reduce and reverse version with break and return emulation adapted to objects",
   "main": "index.js",
   "license": "MIT",

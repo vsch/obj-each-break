@@ -2,10 +2,15 @@
 
 [TOC]: # " "
 
+- [0.1.6](#016)
 - [0.1.4](#014)
 - [0.1.2](#012)
 - [0.1.0](#010)
 
+
+## 0.1.6
+
+Change: `mergeDefaults` to proceed in increasing key index order to preserve property ordering
 
 ## 0.1.4
 
