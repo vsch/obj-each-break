@@ -389,7 +389,7 @@ function mergeDefaults(src, levels = undefined, isImmutable = false, deepCloneSr
             const key = keys[i];
             const value = src[key];
 
-            if (isValid(value)) {
+            if (value !== UNDEFINED) {
                 newValue = dstValue = isObjectLike(dst) && dst.hasOwnProperty(key) ? dst[key] : UNDEFINED;
 
                 if (!isValid(dstValue)) {
