@@ -1,6 +1,6 @@
 # obj-each-break
 
-[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
+[![experimental](https://badges.github.io/stability-badges/dist/experimental.svg)](https://github.com/badges/stability-badges)
 
 Small utility library implementing `each`, `map`, `filter`, and their reverse versions for
 Arrays and Objects on all own properties not just integer indexed ones. Uses `for-each-break` to
@@ -67,5 +67,5 @@ npm install obj-each-break --save
 
 ## License
 
-MIT, see [LICENSE.md](http://github.com/vsch/obj-each-break/blob/master/LICENSE.md) for details.
+MIT, see [LICENSE.md](https://github.com/vsch/obj-each-break/blob/master/LICENSE.md) for details.
 
