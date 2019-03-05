@@ -1,6 +1,6 @@
 {
   "name": "obj-each-break",
-  "version": "0.1.8",
+  "version": "0.1.10",
   "description": "each, map, filter, reduce and reverse version with break and return emulation adapted to objects",
   "main": "index.js",
   "license": "MIT",
@@ -11,11 +11,12 @@
   },
   "dependencies": {
     "lodash.isfunction": "^3.0.9",
-    "util-type-funcs": "^0.2.4",
+    "util-type-funcs": "^0.2.8",
     "for-each-break": "^0.2.2"
   },
   "devDependencies": {
-    "jest": "^24.1.0"
+    "jest": "^24.1.0",
+    "jest-each": "^24.0.0"
   },
   "scripts": {
     "test": "jest"

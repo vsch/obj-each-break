@@ -1,5 +1,5 @@
 "use strict";
-const jestEach = require('jest-each');
+const jestEach = require('jest-each').default;
 const testUtil = require('./testUtil');
 const utilTypeFuncs = require('util-type-funcs');
 const objEachBreak = require('obj-each-break');
